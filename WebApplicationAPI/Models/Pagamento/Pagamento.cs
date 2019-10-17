@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApplicationAPI.Models.Especie
+namespace WebApplicationAPI.Models.Pagamento
 {
-    public class Especie
+    public class Pagamento
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdEspecie { get; set; }
-        public string NomeEspecie { get; set; }
+        public int IdPagamento { get; set; }
+        public string DescPagamento { get; set; }
     }
 }

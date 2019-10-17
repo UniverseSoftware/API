@@ -157,6 +157,7 @@
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EspeciesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PagamentosController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
     <Compile Include="Controllers\PetsController.cs" />
     <Compile Include="Controllers\SubEspeciesController.cs" />
@@ -175,6 +176,9 @@
     <Compile Include="Models\Especie\EspecieDAL.cs" />
     <Compile Include="Models\Especie\EspecieRepositorio.cs" />
     <Compile Include="Models\IRepositorio.cs" />
+    <Compile Include="Models\Pagamento\Pagamento.cs" />
+    <Compile Include="Models\Pagamento\PagamentoDAL.cs" />
+    <Compile Include="Models\Pagamento\PagamentoRepositorio.cs" />
     <Compile Include="Models\Pessoa\Pessoa.cs" />
     <Compile Include="Models\Pessoa\PessoaDAL.cs" />
     <Compile Include="Models\Pessoa\PessoaRepositorio.cs" />
@@ -285,6 +289,7 @@
     <Folder Include="Views\CadUsuarios\" />
     <Folder Include="Views\Empresas\" />
     <Folder Include="Views\Especies\" />
+    <Folder Include="Views\Pagamentos\" />
     <Folder Include="Views\Pessoas\" />
     <Folder Include="Views\Pets\" />
     <Folder Include="Views\SubEspecies\" />

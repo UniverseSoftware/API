@@ -4,9 +4,9 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace WebApplicationAPI.Models.Especie
+namespace WebApplicationAPI.Models.Pagamento
 {
-    public class EspecieDAL
+    public class PagamentoDAL
     {
 
         protected static string GetStringConexao()
@@ -14,17 +14,16 @@ namespace WebApplicationAPI.Models.Especie
             return ConfigurationManager.ConnectionStrings["PLATPET"].ConnectionString;
         }
 
-        public static int InsertEspecie(Especie especie)
+        public static int InsertPagamento(Pagamento pagamento)
         {
             int reg = 0;
             using (SqlConnection con = new SqlConnection(GetStringConexao()))
             {
-                string sql = " INSERT INTO ESPECIE (IDESPECIE,NOMEESPECIE) VALUES (@ID,@NOME) ";
+                string sql = "INSERT INTO PAGAMENTO (DESCPAGAMENTO) VALUES (@DESCPAGAMENTO)";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@ID", especie.IdEspecie);
-                    cmd.Parameters.AddWithValue("@NOME", especie.NomeEspecie);
+                    cmd.Parameters.AddWithValue("@DESCPAGAMENTO", pagamento.DescPagamento);
 
                     con.Open();
                     reg = cmd.ExecuteNonQuery();
@@ -34,17 +33,16 @@ namespace WebApplicationAPI.Models.Especie
             }
         }
 
-        public static int UpdateEspecie(Especie especie)
+        public static int UpdatePagamento(Pagamento pagamento)
         {
             int reg = 0;
             using (SqlConnection con = new SqlConnection(GetStringConexao()))
             {
-                string sql = " UPDATE ESPECIE SET NOMEESPECIE = @NOME WHERE IDESPECIE = @ID ";
+                string sql = "UPDATE PAGAMENTO SET DESCPAGAMENTO = @DESCPAGAMENTO ";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@ID", especie.IdEspecie);
-                    cmd.Parameters.AddWithValue("@NOME", especie.NomeEspecie);
+                    cmd.Parameters.AddWithValue("@DESCPAGAMENTO", pagamento.DescPagamento);
 
                     con.Open();
                     reg = cmd.ExecuteNonQuery();
@@ -53,12 +51,12 @@ namespace WebApplicationAPI.Models.Especie
                 return reg;
             }
         }
-        public static int DeleteEspecie(int id)
+        public static int DeletePagamento(int id)
         {
             int reg = 0;
             using (SqlConnection con = new SqlConnection(GetStringConexao()))
             {
-                string sql = "DELETE FROM ESPECIE WHERE IDESPECIE = @ID";
+                string sql = "DELETE FROM PAGAMENTO WHERE IDPAGAMENTO = @ID";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
@@ -72,15 +70,15 @@ namespace WebApplicationAPI.Models.Especie
             }
         }
 
-        public static List<Especie> GetEspecies()
+        public static List<Pagamento> GetPagamentos()
         {
-            List<Especie> _Especie = new List<Especie>();
+            List<Pagamento> _Pagamento = new List<Pagamento>();
 
             using (SqlConnection con = new SqlConnection(GetStringConexao()))
 
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand(" SELECT IDESPECIE, NOMEESPECIE FROM ESPECIE ", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT IDPAGAMENTO, DESCPAGAMENTO FROM PAGAMENTO", con))
                 {
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
@@ -88,27 +86,27 @@ namespace WebApplicationAPI.Models.Especie
                         {
                             while (dr.Read())
                             {
-                                var especie = new Especie();
+                                var pagamento = new Pagamento();
 
-                                especie.IdEspecie = Convert.ToInt32(dr["IDESPECIE"]);
-                                especie.NomeEspecie = dr["NOMEESPECIE"].ToString();
+                                pagamento.IdPagamento = Convert.ToInt32(dr["IDPAGAMENTO"]);
+                                pagamento.DescPagamento = dr["DESCPAGAMENTO"].ToString();
 
-                                _Especie.Add(especie);
+                                _Pagamento.Add(pagamento);
                             }
                         }
-                        return _Especie;
+                        return _Pagamento;
                     }
                 }
             }
         }
 
-        public static Especie GetEspecie(int id)
+        public static Pagamento GetPagamento(int id)
         {
-            Especie especie = null;
+            Pagamento pagamento = null;
             using (SqlConnection con = new SqlConnection(GetStringConexao()))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT IDESPECIE, NOMEESPECIE FROM ESPECIE WHERE IDESPECIE = @ID ", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT IDPAGAMENTO, DESCPAGAMENTO FROM PAGAMENTO WHERE IDPAGAMENTO = @ID", con))
                 {
                     cmd.Parameters.AddWithValue("@ID", id);
 
@@ -118,12 +116,12 @@ namespace WebApplicationAPI.Models.Especie
                         {
                             while (dr.Read())
                             {
-                                especie = new Especie();
-                                especie.IdEspecie = Convert.ToInt32(dr["IDESPECIE"]);
-                                especie.NomeEspecie = dr["NOMEESPECIE"].ToString();
+                                pagamento = new Pagamento();
+                                pagamento.IdPagamento = Convert.ToInt32(dr["IDPAGAMENTO"]);
+                                pagamento.DescPagamento = dr["DESCPAGAMENTO"].ToString();
                             }
                         }
-                        return especie;
+                        return pagamento;
                     }
                 }
             }

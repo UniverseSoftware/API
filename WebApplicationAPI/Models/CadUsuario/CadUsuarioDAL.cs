@@ -10,7 +10,7 @@ namespace WebApplicationAPI.Models.CadUsuario
     {
         protected static string GetStringConexao()
         {
-            return ConfigurationManager.ConnectionStrings["CONEXAOPLATPET"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["PLATPET"].ConnectionString;
         }
 
         public static int InsertCadUsuario(CadUsuario cadusuario,int tpuser)

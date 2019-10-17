@@ -11,8 +11,7 @@ namespace WebApplicationAPI.Models.Pet
 
         protected static string GetStringConexao()
         {
-            return ConfigurationManager.ConnectionStrings["CONEXAOPLATPET"].ConnectionString;
-            //return ConfigurationManager.ConnectionStrings["PLATPET"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["PLATPET"].ConnectionString;
         }
 
         public static int InsertPet(Pet pet)

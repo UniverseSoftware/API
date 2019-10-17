@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace WebApplicationAPI.Models.SubEspecie
 {
@@ -13,7 +11,7 @@ namespace WebApplicationAPI.Models.SubEspecie
 
         protected static string GetStringConexao()
         {
-            return ConfigurationManager.ConnectionStrings["CONEXAOPLATPET"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["PLATPET"].ConnectionString;
         }
 
         public static int InsertSubEspecie(SubEspecie subespecie)
