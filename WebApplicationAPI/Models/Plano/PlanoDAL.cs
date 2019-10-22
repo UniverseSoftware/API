@@ -36,16 +36,15 @@ namespace WebApplicationAPI.Models.Plano
             }
         }
 
-        public static int UpdatePlano(Plano plano, int id)
+        public static int UpdatePlano(Plano plano)
         {
             int reg = 0;
             using (SqlConnection con = new SqlConnection(GetStringConexao()))
             {
-                string sql = "UPDATE PLANO SET TIPOPLANO = @TIPOPLANO, DESCPLANO = @DESCPLANO, DURAPLANO = @DURAPLANO, VALORPLANO = @VALORPLANO WHERE IDPLANO = @ID ";
+                string sql = "UPDATE PLANO SET TIPOPLANO = @TIPOPLANO, DESCPLANO = @DESCPLANO, DURAPLANO = @DURAPLANO, VALORPLANO = @VALORPLANO";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@ID", id);
                     cmd.Parameters.AddWithValue("@TIPOPLANO", plano.TipoPlano);
                     cmd.Parameters.AddWithValue("@DESCPLANO", plano.DescPlano);
                     cmd.Parameters.AddWithValue("@DURAPLANO", plano.DuraPlano);

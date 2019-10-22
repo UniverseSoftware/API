@@ -12,7 +12,7 @@ namespace WebApplicationAPI.Models.Plano
 
         public IEnumerable<Plano> GetAll()
         {
-            return PlanoDAL.GetPlano();
+            return PlanoDAL.GetPlanos();
         }
 
         public Plano GetById(int id)
@@ -25,9 +25,9 @@ namespace WebApplicationAPI.Models.Plano
             PlanoDAL.InsertPlano(item);
         }
 
-        public void Update(Plano item, int id)
+        public void Update(Plano item)
         {
-            PagamentoDAL.UpdatePagamento(item, id);
+            PlanoDAL.UpdatePlano(item);
         }
     }
 }

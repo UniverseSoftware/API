@@ -19,11 +19,10 @@ namespace WebApplicationAPI.Models.Pet
             int reg = 0;
             using (SqlConnection con = new SqlConnection(GetStringConexao()))
             {
-                string sql = "INSERT INTO PET (IDPET, IDPESSOA, IDSUBESPECIE, RGPET, OBSPET, NOMEPET) VALUES (@IDPET, @IDPESSOA, @IDSUBE, @RGPET, @OBS, @NOME)";
+                string sql = "INSERT INTO PET (IDPESSOA, IDSUBESPECIE, RGPET, OBSPET, NOMEPET) VALUES (@IDPESSOA, @IDSUBE, @RGPET, @OBS, @NOME)";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@IDPET", pet.IdPet);
                     cmd.Parameters.AddWithValue("@IDSUBE", pet.IdSubespecie);
                     cmd.Parameters.AddWithValue("@IDPESSOA", pet.IdPessoa);
                     cmd.Parameters.AddWithValue("@RGPET", pet.RGPet);

@@ -39,9 +39,9 @@ namespace WebApplicationAPI.Controllers
 
         // PUT: api/Clientes/5
         [HttpPut()]
-        public void Put([FromBody]Plano plano, int id)
+        public void Put([FromBody]Plano plano)
         {
-            _pagamentosRepositorio.Update(plano, id);
+            _planosRepositorio.Update(plano);
         }
 
         // DELETE: api/Clientes/5
