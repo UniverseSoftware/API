@@ -192,6 +192,9 @@
     <Compile Include="Models\Plano\Plano.cs" />
     <Compile Include="Models\Plano\PlanoDAL.cs" />
     <Compile Include="Models\Plano\PlanoRepositorio.cs" />
+    <Compile Include="Models\Servico\Servico.cs" />
+    <Compile Include="Models\Servico\ServicoDAL.cs" />
+    <Compile Include="Models\Servico\ServicoRepositorio.cs" />
     <Compile Include="Models\SubEspecie\SubEspecie.cs" />
     <Compile Include="Models\SubEspecie\SubEspecieDAL.cs" />
     <Compile Include="Models\SubEspecie\SubEspecieRepositorio.cs" />
@@ -298,6 +301,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Avaliacao\" />
+    <Folder Include="Models\Fatura\" />
+    <Folder Include="Models\ItemPedido\" />
+    <Folder Include="Models\Pedido\" />
+    <Folder Include="Models\PlanoUsuario\" />
+    <Folder Include="Models\ServicoEmpresa\" />
     <Folder Include="Views\CadUsuarios\" />
     <Folder Include="Views\Empresas\" />
     <Folder Include="Views\Especies\" />
