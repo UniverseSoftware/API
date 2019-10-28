@@ -3,12 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplicationAPI.Models.ServicoEmpresa
 {
-    public class Servico
+    public class ServicoEmpresa
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int IdServicoEmpresa { get; set; }
+        public int IdEmpresa { get; set; }
         public int IdServico { get; set; }
-        public string NomeServico { get; set; }
-        public string DescServico { get; set; }
+        public double VlServicoEmpresa { get; set; }
     }
 }

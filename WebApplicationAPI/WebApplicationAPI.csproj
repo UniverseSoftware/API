@@ -164,6 +164,8 @@
     <Compile Include="Controllers\PessoasController.cs" />
     <Compile Include="Controllers\PetsController.cs" />
     <Compile Include="Controllers\PlanosController.cs" />
+    <Compile Include="Controllers\ServicoEmpresasController.cs" />
+    <Compile Include="Controllers\ServicosController.cs" />
     <Compile Include="Controllers\SubEspeciesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -192,6 +194,9 @@
     <Compile Include="Models\Plano\Plano.cs" />
     <Compile Include="Models\Plano\PlanoDAL.cs" />
     <Compile Include="Models\Plano\PlanoRepositorio.cs" />
+    <Compile Include="Models\ServicoEmpresa\ServicoEmpresa.cs" />
+    <Compile Include="Models\ServicoEmpresa\ServicoEmpresaDAL.cs" />
+    <Compile Include="Models\ServicoEmpresa\ServicoEmpresaRepositorio.cs" />
     <Compile Include="Models\Servico\Servico.cs" />
     <Compile Include="Models\Servico\ServicoDAL.cs" />
     <Compile Include="Models\Servico\ServicoRepositorio.cs" />
@@ -306,7 +311,6 @@
     <Folder Include="Models\ItemPedido\" />
     <Folder Include="Models\Pedido\" />
     <Folder Include="Models\PlanoUsuario\" />
-    <Folder Include="Models\ServicoEmpresa\" />
     <Folder Include="Views\CadUsuarios\" />
     <Folder Include="Views\Empresas\" />
     <Folder Include="Views\Especies\" />
@@ -314,6 +318,8 @@
     <Folder Include="Views\Pessoas\" />
     <Folder Include="Views\Pets\" />
     <Folder Include="Views\Planos\" />
+    <Folder Include="Views\ServicoEmpresas\" />
+    <Folder Include="Views\Servicos\" />
     <Folder Include="Views\SubEspecies\" />
     <Folder Include="Views\Usuarios\" />
   </ItemGroup>

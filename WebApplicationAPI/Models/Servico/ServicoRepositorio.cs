@@ -1,11 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
-namespace WebApplicationAPI.Models.Servico
+namespace WebApplicationAPI.Models.ServicoEmpresa
 {
-    public class ServicoRepositorio
+    public class ServicoRepositorio : IRepositorio<Servico>
     {
+
+        public void Delete(Servico item)
+        {
+            ServicoDAL.DeleteServico(item.IdServico);
+        }
+
+        public IEnumerable<Servico> GetAll()
+        {
+            return ServicoDAL.GetServicos();
+        }
+
+        public Servico GetById(int id)
+        {
+            return ServicoDAL.GetServico(id);
+        }
+
+        public void Insert(Servico item)
+        {
+            ServicoDAL.InsertServico(item);
+        }
+
+        public void Update(Servico item)
+        {
+            ServicoDAL.UpdateServico(item);
+        }
     }
 }

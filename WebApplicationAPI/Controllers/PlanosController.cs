@@ -22,7 +22,7 @@ namespace WebApplicationAPI.Controllers
         }
 
         // GET: api/Clientes/5
-        public Plano GetPplano(int id)
+        public Plano GetPlano(int id)
         {
             var Plano = _planosRepositorio.GetById(id);
 
