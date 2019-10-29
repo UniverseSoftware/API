@@ -186,10 +186,19 @@
     <Compile Include="Models\Especie\Especie.cs" />
     <Compile Include="Models\Especie\EspecieDAL.cs" />
     <Compile Include="Models\Especie\EspecieRepositorio.cs" />
+    <Compile Include="Models\Fatura\FaturaRepositorio.cs" />
+    <Compile Include="Models\Fatura\FaturaDAL.cs" />
+    <Compile Include="Models\Fatura\Fatura.cs" />
     <Compile Include="Models\IRepositorio.cs" />
+    <Compile Include="Models\ItemPedido\ItemPedido.cs" />
+    <Compile Include="Models\ItemPedido\ItemPedidoDAL.cs" />
+    <Compile Include="Models\ItemPedido\ItemPedidoRepositorio.cs" />
     <Compile Include="Models\Pagamento\Pagamento.cs" />
     <Compile Include="Models\Pagamento\PagamentoDAL.cs" />
     <Compile Include="Models\Pagamento\PagamentoRepositorio.cs" />
+    <Compile Include="Models\Pedido\Pedido.cs" />
+    <Compile Include="Models\Pedido\PedidoDAL.cs" />
+    <Compile Include="Models\Pedido\PedidoRepositorio.cs" />
     <Compile Include="Models\Pessoa\Pessoa.cs" />
     <Compile Include="Models\Pessoa\PessoaDAL.cs" />
     <Compile Include="Models\Pessoa\PessoaRepositorio.cs" />
@@ -314,9 +323,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Fatura\" />
-    <Folder Include="Models\ItemPedido\" />
-    <Folder Include="Models\Pedido\" />
     <Folder Include="Views\CadUsuarios\" />
     <Folder Include="Views\Empresas\" />
     <Folder Include="Views\Especies\" />
