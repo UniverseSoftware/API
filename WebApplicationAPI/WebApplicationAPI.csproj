@@ -157,6 +157,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CadUsuariosController.cs" />
+    <Compile Include="Controllers\AvaliacoesController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EspeciesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -173,6 +174,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Avaliacao\AvaliacaoDAL.cs" />
+    <Compile Include="Models\Avaliacao\AvaliacaoRepositorio.cs" />
+    <Compile Include="Models\Avaliacao\Avaliacao.cs" />
     <Compile Include="Models\CadUsuario\CadUsuarioDAL.cs" />
     <Compile Include="Models\CadUsuario\CadUsuario.cs" />
     <Compile Include="Models\CadUsuario\CadUsuarioRepositorio.cs" />
@@ -310,7 +314,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Avaliacao\" />
     <Folder Include="Models\Fatura\" />
     <Folder Include="Models\ItemPedido\" />
     <Folder Include="Models\Pedido\" />
