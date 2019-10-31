@@ -156,6 +156,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\FaturasController.cs" />
+    <Compile Include="Controllers\PedidosController.cs" />
+    <Compile Include="Controllers\ItemPedidosController.cs" />
     <Compile Include="Controllers\CadUsuariosController.cs" />
     <Compile Include="Controllers\AvaliacoesController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
