@@ -5,6 +5,8 @@ namespace WebApplicationAPI.Models.ItemPedido
 {
     public class ItemPedido
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdItemPedido { get; set; }
         public int IdPedido { get; set; }
         public int itemPedido { get; set; }

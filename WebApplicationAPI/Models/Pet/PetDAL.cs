@@ -151,7 +151,7 @@ namespace WebApplicationAPI.Models.Pet
 
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT IDPET, IDPESSOA, IDESPECIE, IDSUBESPECIE, RGPET, OBSPET, NOMEPET FROM PET WHERE IDPESSOA = @ID", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT IDPET, IDPESSOA, IDSUBESPECIE, RGPET, OBSPET, NOMEPET FROM PET WHERE IDPESSOA = @ID", con))
                 {
                     cmd.Parameters.AddWithValue("@ID", id);
                     using (SqlDataReader dr = cmd.ExecuteReader())
