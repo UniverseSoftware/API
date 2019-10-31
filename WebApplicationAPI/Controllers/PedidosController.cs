@@ -4,12 +4,12 @@ using WebApplicationAPI.Models.Pedido;
 
 namespace WebApplicationAPI.Controllers
 {
-    public class PediosController : ApiController
+    public class PedidosController : ApiController
     {
         // GET: Usuarios
         private readonly PedidoRepositorio _pedidosRepositorio;
 
-        public PediosController()
+        public PedidosController()
         {
             _pedidosRepositorio = new PedidoRepositorio();
         }
