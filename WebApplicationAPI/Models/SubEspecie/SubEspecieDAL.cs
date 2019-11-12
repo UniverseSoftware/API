@@ -139,7 +139,7 @@ namespace WebApplicationAPI.Models.SubEspecie
 
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand(" SELECT IDSUBESPECIE, IDESPECIE, NOMESUBESPECIE FROM SUBESPECIE WHERE IDESPECIES = @ID ", con))
+                using (SqlCommand cmd = new SqlCommand(" SELECT IDSUBESPECIE, IDESPECIE, NOMESUBESPECIE FROM SUBESPECIE WHERE IDESPECIE = @ID ", con))
                 {
                     cmd.Parameters.AddWithValue("@ID", id);
                     using (SqlDataReader dr = cmd.ExecuteReader())
