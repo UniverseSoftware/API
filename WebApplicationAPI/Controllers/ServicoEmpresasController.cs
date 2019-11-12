@@ -22,6 +22,7 @@ namespace WebApplicationAPI.Controllers
         }
 
         // GET: api/Clientes/5
+        [HttpGet]
         public ServicoEmpresa GetServicoEmpresa(int id)
         {
             var ServicoEmpresa = _servicoempresasRepositorio.GetById(id);

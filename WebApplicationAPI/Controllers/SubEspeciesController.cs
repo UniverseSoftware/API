@@ -29,7 +29,7 @@ namespace WebApplicationAPI.Controllers
 
             return SubEspecie;
         }
-        [Route("SubEsp/Especie/{id}")]
+        [Route("api/SubEsp/Especie/{id}")]
         [HttpGet]
         public IEnumerable<SubEspecie> ListE(int id)
         {
