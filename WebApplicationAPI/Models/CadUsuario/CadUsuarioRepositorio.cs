@@ -20,6 +20,11 @@ namespace WebApplicationAPI.Models.CadUsuario
             return CadUsuarioDAL.GetCadUsuario(id);
         }
 
+        public CadUsuario GetByLogin(string userusuario)
+        {
+            return CadUsuarioDAL.GetLogin(userusuario);
+        }
+
         public void Insert(CadUsuario item,int tpuser)
         {
             CadUsuarioDAL.InsertCadUsuario(item,tpuser);

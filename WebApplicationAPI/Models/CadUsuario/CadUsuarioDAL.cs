@@ -182,5 +182,43 @@ namespace WebApplicationAPI.Models.CadUsuario
                 }
             }
         }
+
+        public static CadUsuario GetLogin(string userusuario)
+        {
+
+            CadUsuario cadusuario = null;
+            using (SqlConnection con = new SqlConnection(GetStringConexao()))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(" SELECT USUARIO.IDUSUARIO AS ID,USUARIO.USERUSUARIO AS USR,CASE WHEN USUARIO.TIPOUSUARIO = 2 THEN PESSOA.NOMEPESSOA WHEN TIPOUSUARIO = 1 THEN EMPRESA.NFANTASIAEMPRESA ELSE 'administrador' END AS NOME,CASE WHEN USUARIO.TIPOUSUARIO = 2 THEN PESSOA.SOBRENOMEPESSOA WHEN TIPOUSUARIO = 1 THEN EMPRESA.RAZAOEMPRESA ELSE 'platpet' END AS SNOME,UPPER(SUBSTRING(sys.fn_sqlvarbasetostr(HASHBYTES('MD5',USUARIO.PASSUSUARIO)),3,32)) AS PASS,USUARIO.TIPOUSUARIO AS TIPO,CASE WHEN USUARIO.TIPOUSUARIO = 1 THEN EMPRESA.EMAILEMPRESA WHEN USUARIO.TIPOUSUARIO = 2 THEN PESSOA.EMAILPESSOA ELSE 'UNIVERSE.SOFTWARE.2019@GMAIL.COM'	END EMAIL, STATUSUSUARIO AS STATUS,CASE WHEN USUARIO.TIPOUSUARIO = 2 THEN PESSOA.IDPESSOA WHEN TIPOUSUARIO = 1 THEN EMPRESA.IDEMPRESA ELSE 0 END AS IDEP,CASE WHEN USUARIO.TIPOUSUARIO = 2 THEN PESSOA.CPFPESSOA WHEN TIPOUSUARIO = 1 THEN EMPRESA.CNPJEMPRESA ELSE '' END AS CGC,CASE WHEN USUARIO.TIPOUSUARIO = 2 THEN PESSOA.TELPESSOA WHEN TIPOUSUARIO = 1 THEN EMPRESA.TELEMPRESA ELSE '' END AS TEL,CASE WHEN USUARIO.TIPOUSUARIO = 2 THEN PESSOA.ENDPESSOA WHEN TIPOUSUARIO = 1 THEN EMPRESA.ENDEMPRESA ELSE '' END AS ENDE FROM USUARIO LEFT JOIN PESSOA  ON USUARIO.IDUSUARIO = PESSOA.IDUSUARIO LEFT JOIN EMPRESA ON USUARIO.IDUSUARIO = EMPRESA.IDUSUARIO WHERE USUARIO.USERUSUARIO = @USER ", con))
+                {
+                    cmd.Parameters.AddWithValue("@USER", userusuario);
+                    
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr != null)
+                        {
+                            while (dr.Read())
+                            {
+                                cadusuario = new CadUsuario();
+                                cadusuario.IdUsuario = Convert.ToInt32(dr["ID"]);
+                                cadusuario.UserUsuario = dr["USR"].ToString();
+                                cadusuario.PassUsuario = dr["PASS"].ToString();
+                                cadusuario.TipoUsuario = Convert.ToInt32(dr["TIPO"]);
+                                cadusuario.StatusUsuario = Convert.ToInt32(dr["STATUS"]);
+                                cadusuario.IdEP = Convert.ToInt32(dr["IDEP"]);
+                                cadusuario.CGCEP = dr["CGC"].ToString();
+                                cadusuario.NomeEP = dr["NOME"].ToString();
+                                cadusuario.SnomeEP = dr["SNOME"].ToString();
+                                cadusuario.EmailEP = dr["EMAIL"].ToString();
+                                cadusuario.TelEP = dr["TEL"].ToString();
+                                cadusuario.EndEP = dr["ENDE"].ToString();
+                            }
+                        }
+                        return cadusuario;
+                    }
+                }
+            }
+        }
     }
 }

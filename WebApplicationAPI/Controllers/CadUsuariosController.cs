@@ -32,6 +32,16 @@ namespace WebApplicationAPI.Controllers
             return CadUsuario;
         }
 
+        // GET: api/Clientes/5
+        [Route("api/CadUsuarios/login/{userusuario}")]
+        [HttpGet()]
+        public CadUsuario GetCadUsuario(string userusuario)
+        {
+            var CadUsuario = _cadusuariosRepositorio.GetByLogin(userusuario);
+
+            return CadUsuario;
+        }
+
         // POST: api/Clientes   
         [Route("api/CadUsuarios/I/{tpuser}")]
         [HttpPost()]
