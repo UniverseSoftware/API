@@ -42,10 +42,11 @@ namespace WebApplicationAPI.Models.Pet
             int reg = 0;
             using (SqlConnection con = new SqlConnection(GetStringConexao()))
             {
-                string sql = "UPDATE PET SET IDPESSOA = @PESSOA, IDSUBESPECIE = @SUBE, RGPET = @RGPET, OBSPET = @OBS, NOMEPET = @NOME ";
+                string sql = "UPDATE PET SET IDPESSOA = @PESSOA, IDSUBESPECIE = @SUBE, RGPET = @RGPET, OBSPET = @OBS, NOMEPET = @NOME WHERE IDPET = @ID ";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@ID", pet.IdPet);
                     cmd.Parameters.AddWithValue("@PESSOA", pet.IdPessoa);
                     cmd.Parameters.AddWithValue("@SUBE", pet.IdSubespecie);
                     cmd.Parameters.AddWithValue("@RGPET", pet.RGPet);

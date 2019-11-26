@@ -40,10 +40,11 @@ namespace WebApplicationAPI.Models.ServicoEmpresa
             int reg = 0;
             using (SqlConnection con = new SqlConnection(GetStringConexao()))
             {
-                string sql = " UPDATE SERV_EMPR SET IDEMPRESA = @IDEMPRESA, IDSERVICO = @IDSERVICO, VLSERV_EMPR = @VLSERV_EMPR ";
+                string sql = " UPDATE SERV_EMPR SET IDEMPRESA = @IDEMPRESA, IDSERVICO = @IDSERVICO, VLSERV_EMPR = @VLSERV_EMPR WHERE IDSERV_EMPR = @ID ";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@ID", servicoempresa.IdServicoEmpresa);
                     cmd.Parameters.AddWithValue("@NOMESERVICO", servicoempresa.IdEmpresa);
                     cmd.Parameters.AddWithValue("@DESCSERVICO", servicoempresa.IdServico);
                     cmd.Parameters.AddWithValue("@VLSERV_EMP", servicoempresa.VlServicoEmpresa);
@@ -82,7 +83,7 @@ namespace WebApplicationAPI.Models.ServicoEmpresa
 
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand(" SELECT IDSERV_EMPR,IDEMPRESA, IDSERVICO, VLSERV_EMPR FROM SERV_EMPR ", con))
+                using (SqlCommand cmd = new SqlCommand(" SELECT IDSERV_EMPR,IDEMPRESA, SE.IDSERVICO, VLSERV_EMPR, NOMESERVICO FROM SERV_EMPR SE INNER JOIN SERVICO S ON  SE.IDSERVICO = S.IDSERVICO ", con))
                 {
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
@@ -96,7 +97,7 @@ namespace WebApplicationAPI.Models.ServicoEmpresa
                                 servicoempresa.IdEmpresa = Convert.ToInt32(dr["IDEMPRESA"]);
                                 servicoempresa.IdServico = Convert.ToInt32(dr["IDSERVICO"]);
                                 servicoempresa.VlServicoEmpresa = Convert.ToDouble(dr["VLSERV_EMPR"]);
-
+                                servicoempresa.NomeServico = dr["NOMESERVICO"].ToString();
 
                                 _ServicoEmpresa.Add(servicoempresa);
                             }
@@ -113,7 +114,7 @@ namespace WebApplicationAPI.Models.ServicoEmpresa
             using (SqlConnection con = new SqlConnection(GetStringConexao()))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand(" SELECT IDSERV_EMPR,IDEMPRESA, IDSERVICO, VLSERV_EMPR FROM SERV_EMPR WHERE IDSERV_EMPR = @ID ", con))
+                using (SqlCommand cmd = new SqlCommand(" SELECT IDSERV_EMPR,IDEMPRESA, SE.IDSERVICO, VLSERV_EMPR, NOMESERVICO FROM SERV_EMPR SE INNER JOIN SERVICO S ON  SE.IDSERVICO = S.IDSERVICO WHERE IDEMPRESA = @ID ", con))
                 {
                     cmd.Parameters.AddWithValue("@ID", id);
 
@@ -129,6 +130,7 @@ namespace WebApplicationAPI.Models.ServicoEmpresa
                                 servicoempresa.IdEmpresa = Convert.ToInt32(dr["IDEMPRESA"]);
                                 servicoempresa.IdServico = Convert.ToInt32(dr["IDSERVICO"]);
                                 servicoempresa.VlServicoEmpresa = Convert.ToDouble(dr["VLSERV_EMPR"]);
+                                servicoempresa.NomeServico = dr["NOMESERVICO"].ToString();
                             }
                         }
                         return servicoempresa;

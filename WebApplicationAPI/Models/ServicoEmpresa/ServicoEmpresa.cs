@@ -11,5 +11,6 @@ namespace WebApplicationAPI.Models.ServicoEmpresa
         public int IdEmpresa { get; set; }
         public int IdServico { get; set; }
         public double VlServicoEmpresa { get; set; }
+        public string NomeServico { get; set; }
     }
 }
