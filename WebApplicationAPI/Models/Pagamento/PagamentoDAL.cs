@@ -38,10 +38,11 @@ namespace WebApplicationAPI.Models.Pagamento
             int reg = 0;
             using (SqlConnection con = new SqlConnection(GetStringConexao()))
             {
-                string sql = "UPDATE PAGAMENTO SET DESCPAGAMENTO = @DESCPAGAMENTO ";
+                string sql = "UPDATE PAGAMENTO SET DESCPAGAMENTO = @DESCPAGAMENTO WHERE IDPAGAMENTO = @ID  ";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@ID", pagamento.IdPagamento);
                     cmd.Parameters.AddWithValue("@DESCPAGAMENTO", pagamento.DescPagamento);
 
                     con.Open();

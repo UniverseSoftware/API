@@ -45,6 +45,7 @@ namespace WebApplicationAPI.Models.Pedido
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@ID", pedido.IdPedido);
                     cmd.Parameters.AddWithValue("@IDEMPRESA", pedido.IdEmpresa);
                     cmd.Parameters.AddWithValue("@IDPAGAMENTO", pedido.IdPagamento);
                     cmd.Parameters.AddWithValue("@IDPET", pedido.IdPet);

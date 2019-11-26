@@ -46,6 +46,7 @@ namespace WebApplicationAPI.Models.Fatura
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@ID"       , fatura.IdFatura);
                     cmd.Parameters.AddWithValue("@DTEFATURA", fatura.DteFatura);
                     cmd.Parameters.AddWithValue("@DTVFATURA", fatura.DtvFatura);
                     cmd.Parameters.AddWithValue("@TOTFATURA", fatura.TotFatura);

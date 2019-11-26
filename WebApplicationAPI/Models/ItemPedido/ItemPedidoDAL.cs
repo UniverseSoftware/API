@@ -48,6 +48,7 @@ namespace WebApplicationAPI.Models.ItemPedido
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@ID", itempedido.IdItemPedido);
                     cmd.Parameters.AddWithValue("@IDPEDIDO", itempedido.IdPedido);
                     cmd.Parameters.AddWithValue("@ITEMPEDIDO", itempedido.itemPedido);
                     cmd.Parameters.AddWithValue("@IDSERV_EMPR", itempedido.IdServicoEmpresa);

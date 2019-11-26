@@ -44,7 +44,8 @@ namespace WebApplicationAPI.Models.Avaliacao
                 string sql = "UPDATE AVALIACAO SET IDPEDIDO = @IDPEDIDO, NOTAAVALIACAO = @NOTAAVALIACAO, TITULOAVALIACAO = @TITULOAVALIACAO, COMENTAVALIACAO = @COMENTAVALIACAO WHERE IDEMPRESA=@ID";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
-                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandType = CommandType.Text; 
+                    cmd.Parameters.AddWithValue("@ID", avaliacao.IdAvaliacao);
                     cmd.Parameters.AddWithValue("@IDPEDIDO", avaliacao.IdPedido);
                     cmd.Parameters.AddWithValue("@NOTAAVALIACAO", avaliacao.NotaAvaliacao);
                     cmd.Parameters.AddWithValue("@TITULOAVALIACAO", avaliacao.TituloAvaliacao);

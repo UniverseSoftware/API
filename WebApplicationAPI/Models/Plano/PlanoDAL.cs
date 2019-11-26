@@ -41,13 +41,14 @@ namespace WebApplicationAPI.Models.Plano
             int reg = 0;
             using (SqlConnection con = new SqlConnection(GetStringConexao()))
             {
-                string sql = "UPDATE PLANO SET TIPOPLANO = @TIPOPLANO, DESCPLANO = @DESCPLANO, DURAPLANO = @DURAPLANO, VALORPLANO = @VALORPLANO";
+                string sql = "UPDATE PLANO SET TIPOPLANO = @TIPOPLANO, DESCPLANO = @DESCPLANO, DURAPLANO = @DURAPLANO, VALORPLANO = @VALORPLANO WHERE IDPLANO = @ID ";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@TIPOPLANO", plano.TipoPlano);
-                    cmd.Parameters.AddWithValue("@DESCPLANO", plano.DescPlano);
-                    cmd.Parameters.AddWithValue("@DURAPLANO", plano.DuraPlano);
+                    cmd.Parameters.AddWithValue("@ID",    plano.IdPlano);
+                    cmd.Parameters.AddWithValue("@TIPOPLANO",  plano.TipoPlano);
+                    cmd.Parameters.AddWithValue("@DESCPLANO",  plano.DescPlano);
+                    cmd.Parameters.AddWithValue("@DURAPLANO",  plano.DuraPlano);
                     cmd.Parameters.AddWithValue("@VALORPLANO", plano.ValorPlano);
 
                     con.Open();
