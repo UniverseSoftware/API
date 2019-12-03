@@ -20,6 +20,11 @@ namespace WebApplicationAPI.Models.ServicoEmpresa
             return ServicoEmpresaDAL.GetServicoEmpresa(id);
         }
 
+        public IEnumerable<ServicoEmpresa> GetAllServ(int id)
+        {
+            return ServicoEmpresaDAL.GetServicosEmpresas(id);
+        }
+
         public void Insert(ServicoEmpresa item)
         {
             ServicoEmpresaDAL.InsertServicoEmpresa(item);

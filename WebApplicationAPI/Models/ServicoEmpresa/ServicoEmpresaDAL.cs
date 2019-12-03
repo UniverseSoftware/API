@@ -138,5 +138,40 @@ namespace WebApplicationAPI.Models.ServicoEmpresa
                 }
             }
         }
+
+        public static List<ServicoEmpresa> GetServicosEmpresas(int id)
+        {
+            List<ServicoEmpresa> _ServicoEmpresa = new List<ServicoEmpresa>();
+
+            using (SqlConnection con = new SqlConnection(GetStringConexao()))
+
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(" SELECT IDSERV_EMPR,IDEMPRESA, SE.IDSERVICO, VLSERV_EMPR, NOMESERVICO FROM SERV_EMPR SE INNER JOIN SERVICO S ON  SE.IDSERVICO = S.IDSERVICO  WHERE IDEMPRESA = @ID ", con))
+                {
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr != null)
+                        {
+                            while (dr.Read())
+                            {
+                                var servicoempresa = new ServicoEmpresa();
+
+                                servicoempresa.IdServicoEmpresa = Convert.ToInt32(dr["IDSERV_EMPR"]);
+                                servicoempresa.IdEmpresa = Convert.ToInt32(dr["IDEMPRESA"]);
+                                servicoempresa.IdServico = Convert.ToInt32(dr["IDSERVICO"]);
+                                servicoempresa.VlServicoEmpresa = Convert.ToDouble(dr["VLSERV_EMPR"]);
+                                servicoempresa.NomeServico = dr["NOMESERVICO"].ToString();
+
+                                _ServicoEmpresa.Add(servicoempresa);
+                            }
+                        }
+                        return _ServicoEmpresa;
+                    }
+                }
+            }
+        }
+
     }
 }

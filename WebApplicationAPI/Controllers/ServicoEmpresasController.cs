@@ -31,6 +31,13 @@ namespace WebApplicationAPI.Controllers
             return ServicoEmpresa;
         }
 
+        [HttpGet]
+        [Route("api/ServicosEmpresa/{id}")]
+        public IEnumerable<ServicoEmpresa> List(int id)
+        {
+            return _servicoempresasRepositorio.GetAllServ(id);
+        }
+        
         // POST: api/Clientes   
         [HttpPost()]
         public void Post([FromBody]ServicoEmpresa servicoempresa)
