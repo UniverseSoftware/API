@@ -11,6 +11,7 @@ namespace WebApplicationAPI.Models.Pedido
         public int IdEmpresa { get; set; }
         public int IdPagamento { get; set; }
         public int IdPet { get; set; }
+        public int IdPessoa { get; set; }
         public double TotPedido { get; set; }
     }
 }

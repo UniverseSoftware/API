@@ -141,5 +141,43 @@ namespace WebApplicationAPI.Models.Pedido
                 }
             }
         }
+
+        public static List<Pedido> GetPedidosPessoa(int id)
+        {
+            List<Pedido> _Pedidos = new List<Pedido>();
+
+            using (SqlConnection con = new SqlConnection(GetStringConexao()))
+
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(" SELECT PD.IDPEDIDO, PD.IDEMPRESA, PD.IDPAGAMENTO, PD.IDPET, P.IDPESSOA ,PD.TOTPEDIDO FROM PEDIDO PD INNER JOIN PET P ON PD.IDPET = P.IDPET WHERE P.IDPESSOA = @ID ", con))
+                {
+                    cmd.Parameters.AddWithValue("@ID", id);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr != null)
+                        {
+                            while (dr.Read())
+                            {
+                                var pedido = new Pedido();
+
+                                pedido.IdPedido = Convert.ToInt32(dr["IDPEDIDO"]);
+                                pedido.IdEmpresa = Convert.ToInt32(dr["IDEMPRESA"]);
+                                pedido.IdPagamento = Convert.ToInt32(dr["IDPAGAMENTO"]);
+                                pedido.IdPet = Convert.ToInt32(dr["IDPET"]);
+                                pedido.IdPessoa = Convert.ToInt32(dr["IDPESSOA"]);
+                                pedido.TotPedido = Convert.ToDouble(dr["TOTPEDIDO"]);
+
+
+                                _Pedidos.Add(pedido);
+                            }
+                        }
+                        return _Pedidos;
+                    }
+                }
+            }
+        }
+
     }
 }

@@ -22,12 +22,20 @@ namespace WebApplicationAPI.Controllers
         }
 
         // GET: api/Clientes/5
+ 
         public Pedido GetPedido(int id)
         {
             var Pedido = _pedidosRepositorio.GetById(id);
 
 
             return Pedido;
+        }
+
+        [Route("api/PedidosPessoa/{id}")]
+        [HttpGet()]
+        public IEnumerable<Pedido> List(int id)
+        {
+            return _pedidosRepositorio.GetAllP(id);
         }
 
         // POST: api/Clientes   

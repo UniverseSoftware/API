@@ -30,5 +30,10 @@ namespace WebApplicationAPI.Models.Pedido
             PedidoDAL.UpdatePedido(item);
         }
 
+        public IEnumerable<Pedido> GetAllP(int id)
+        {
+            return PedidoDAL.GetPedidosPessoa(id);
+        }
+
     }
 }
