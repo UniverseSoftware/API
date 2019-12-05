@@ -86,7 +86,7 @@ namespace WebApplicationAPI.Models.Pedido
 
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand(" SELECT IDPEDIDO, IDEMPRESA, IDPAGAMENTO, IDPET, TOTPEDIDO FROM PEDIDO ", con))
+                using (SqlCommand cmd = new SqlCommand(" SELECT PD.IDPEDIDO, PD.IDEMPRESA, EM.RAZAOEMPRESA, PD.IDPAGAMENTO, PA.DESCPAGAMENTO, PD.IDPET, P.NOMEPET, P.IDPESSOA, PE.NOMEPESSOA ,PD.TOTPEDIDO  FROM PEDIDO PD  INNER JOIN PET P ON PD.IDPET = P.IDPET  INNER JOIN PESSOA PE ON P.IDPESSOA = PE.IDPESSOA INNER JOIN PAGAMENTO PA ON PD.IDPAGAMENTO = PA.IDPAGAMENTO INNER JOIN EMPRESA EM ON PD.IDEMPRESA = EM.IDEMPRESA ", con))
                 {
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
@@ -98,11 +98,15 @@ namespace WebApplicationAPI.Models.Pedido
 
                                 pedido.IdPedido = Convert.ToInt32(dr["IDPEDIDO"]);
                                 pedido.IdEmpresa = Convert.ToInt32(dr["IDEMPRESA"]);
+                                pedido.NomeEmpresa = dr["RAZAOEMPRESA"].ToString();
                                 pedido.IdPagamento = Convert.ToInt32(dr["IDPAGAMENTO"]);
+                                pedido.DescPagamento = dr["DESCPAGAMENTO"].ToString();
                                 pedido.IdPet = Convert.ToInt32(dr["IDPET"]);
+                                pedido.NomePet = dr["NOMEPET"].ToString();
+                                pedido.IdPessoa = Convert.ToInt32(dr["IDPESSOA"]);
+                                pedido.NomePessoa = dr["NOMEPESSOA"].ToString();
                                 pedido.TotPedido = Convert.ToDouble(dr["TOTPEDIDO"]);
-                                
-
+                                                         
                                 _Pedidos.Add(pedido);
                             }
                         }
@@ -118,7 +122,7 @@ namespace WebApplicationAPI.Models.Pedido
             using (SqlConnection con = new SqlConnection(GetStringConexao()))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand(" SELECT IDPEDIDO, IDEMPRESA, IDPAGAMENTO, IDPET, TOTPEDIDO FROM PEDIDO WHERE IDPEDIDO = @ID", con))
+                using (SqlCommand cmd = new SqlCommand(" SELECT PD.IDPEDIDO, PD.IDEMPRESA, EM.RAZAOEMPRESA, PD.IDPAGAMENTO, PA.DESCPAGAMENTO, PD.IDPET, P.NOMEPET, P.IDPESSOA, PE.NOMEPESSOA ,PD.TOTPEDIDO  FROM PEDIDO PD  INNER JOIN PET P ON PD.IDPET = P.IDPET  INNER JOIN PESSOA PE ON P.IDPESSOA = PE.IDPESSOA INNER JOIN PAGAMENTO PA ON PD.IDPAGAMENTO = PA.IDPAGAMENTO INNER JOIN EMPRESA EM ON PD.IDEMPRESA = EM.IDEMPRESA WHERE PD.IDPEDIDO = @ID", con))
                 {
                     cmd.Parameters.AddWithValue("@ID", id);
 
@@ -131,8 +135,13 @@ namespace WebApplicationAPI.Models.Pedido
                                 pedido = new Pedido();
                                 pedido.IdPedido = Convert.ToInt32(dr["IDPEDIDO"]);
                                 pedido.IdEmpresa = Convert.ToInt32(dr["IDEMPRESA"]);
+                                pedido.NomeEmpresa = dr["RAZAOEMPRESA"].ToString();
                                 pedido.IdPagamento = Convert.ToInt32(dr["IDPAGAMENTO"]);
+                                pedido.DescPagamento = dr["DESCPAGAMENTO"].ToString();
                                 pedido.IdPet = Convert.ToInt32(dr["IDPET"]);
+                                pedido.NomePet = dr["NOMEPET"].ToString();
+                                pedido.IdPessoa = Convert.ToInt32(dr["IDPESSOA"]);
+                                pedido.NomePessoa = dr["NOMEPESSOA"].ToString();
                                 pedido.TotPedido = Convert.ToDouble(dr["TOTPEDIDO"]);
                             }
                         }
@@ -150,7 +159,7 @@ namespace WebApplicationAPI.Models.Pedido
 
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand(" SELECT PD.IDPEDIDO, PD.IDEMPRESA, PD.IDPAGAMENTO, PD.IDPET, P.IDPESSOA ,PD.TOTPEDIDO FROM PEDIDO PD INNER JOIN PET P ON PD.IDPET = P.IDPET WHERE P.IDPESSOA = @ID ", con))
+                using (SqlCommand cmd = new SqlCommand(" SELECT PD.IDPEDIDO, PD.IDEMPRESA, EM.RAZAOEMPRESA, PD.IDPAGAMENTO, PA.DESCPAGAMENTO, PD.IDPET, P.NOMEPET, P.IDPESSOA, PE.NOMEPESSOA ,PD.TOTPEDIDO  FROM PEDIDO PD  INNER JOIN PET P ON PD.IDPET = P.IDPET  INNER JOIN PESSOA PE ON P.IDPESSOA = PE.IDPESSOA INNER JOIN PAGAMENTO PA ON PD.IDPAGAMENTO = PA.IDPAGAMENTO INNER JOIN EMPRESA EM ON PD.IDEMPRESA = EM.IDEMPRESA WHERE P.IDPESSOA = @ID ", con))
                 {
                     cmd.Parameters.AddWithValue("@ID", id);
 
@@ -164,11 +173,14 @@ namespace WebApplicationAPI.Models.Pedido
 
                                 pedido.IdPedido = Convert.ToInt32(dr["IDPEDIDO"]);
                                 pedido.IdEmpresa = Convert.ToInt32(dr["IDEMPRESA"]);
+                                pedido.NomeEmpresa = dr["RAZAOEMPRESA"].ToString();
                                 pedido.IdPagamento = Convert.ToInt32(dr["IDPAGAMENTO"]);
+                                pedido.DescPagamento = dr["DESCPAGAMENTO"].ToString();
                                 pedido.IdPet = Convert.ToInt32(dr["IDPET"]);
+                                pedido.NomePet = dr["NOMEPET"].ToString();
                                 pedido.IdPessoa = Convert.ToInt32(dr["IDPESSOA"]);
+                                pedido.NomePessoa = dr["NOMEPESSOA"].ToString();
                                 pedido.TotPedido = Convert.ToDouble(dr["TOTPEDIDO"]);
-
 
                                 _Pedidos.Add(pedido);
                             }
